@@ -136,3 +136,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Web app temporary files
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
+.vscode/
+.idea/

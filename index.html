@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stochaski - Stochastic Music Generation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Stochaski</h1>
+            <p>Create music through movement and interaction</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Video feed container -->
+            <div class="video-container">
+                <video id="webcam" autoplay muted playsinline></video>
+                <canvas id="motionCanvas"></canvas>
+                <canvas id="interactionCanvas"></canvas>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <div class="control-group">
+                    <label for="scaleSelector">Music Scale:</label>
+                    <select id="scaleSelector">
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="pentatonic">Pentatonic</option>
+                        <option value="blues">Blues</option>
+                        <option value="chromatic">Chromatic</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="sensitivitySlider">Motion Sensitivity:</label>
+                    <input type="range" id="sensitivitySlider" min="10" max="100" value="50">
+                    <span id="sensitivityValue">50</span>
+                </div>
+
+                <div class="control-group">
+                    <button id="startBtn">Start Experience</button>
+                    <button id="pauseBtn" disabled>Pause</button>
+                </div>
+            </div>
+
+            <!-- Status and feedback -->
+            <div class="status">
+                <div id="cameraStatus" class="status-item">
+                    <span class="status-indicator"></span>
+                    <span>Camera: Disconnected</span>
+                </div>
+                <div id="motionStatus" class="status-item">
+                    <span class="status-indicator"></span>
+                    <span>Motion: None</span>
+                </div>
+                <div id="audioStatus" class="status-item">
+                    <span class="status-indicator"></span>
+                    <span>Audio: Ready</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading overlay -->
+        <div id="loadingOverlay" class="overlay">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Setting up your musical experience...</p>
+            </div>
+        </div>
+
+        <!-- Permission overlay -->
+        <div id="permissionOverlay" class="overlay">
+            <div class="permission-content">
+                <h2>Camera Access Required</h2>
+                <p>Stochaski needs access to your camera to detect movement and create music.</p>
+                <button id="requestPermission">Grant Camera Access</button>
+            </div>
+        </div>
+
+        <!-- Error overlay -->
+        <div id="errorOverlay" class="overlay hidden">
+            <div class="error-content">
+                <h2>Something went wrong</h2>
+                <p id="errorMessage">Please check your camera and try again.</p>
+                <button id="retryBtn">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript modules -->
+    <script src="audio.js"></script>
+    <script src="camera.js"></script>
+    <script src="shapes.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
