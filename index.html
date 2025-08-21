@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stochaski - Stochastic Music Generation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Stochaski</h1>
+            <p class="subtitle">Interactive Stochastic Music Experience</p>
+        </header>
+
+        <div class="status-bar">
+            <div id="status-message" class="status-message">
+                Initializing...
+            </div>
+            <div class="mode-indicator">
+                <span id="mode-text">Camera Mode</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="video-container">
+                <video id="video" autoplay muted playsinline></video>
+                <canvas id="motion-canvas" class="motion-canvas"></canvas>
+                <canvas id="graphics-canvas" class="graphics-canvas"></canvas>
+                <div class="camera-overlay">
+                    <div id="fallback-message" class="fallback-message hidden">
+                        <h3>Camera Unavailable</h3>
+                        <p>Using mouse/touch interaction mode</p>
+                        <p>Move your cursor or tap to create music!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label for="scale-select">Musical Scale:</label>
+                    <select id="scale-select">
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="pentatonic">Pentatonic</option>
+                        <option value="blues">Blues</option>
+                        <option value="chromatic">Chromatic</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="volume-slider">Volume:</label>
+                    <input type="range" id="volume-slider" min="0" max="100" value="70">
+                    <span id="volume-value">70%</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="sensitivity-slider">Motion Sensitivity:</label>
+                    <input type="range" id="sensitivity-slider" min="1" max="10" value="5">
+                    <span id="sensitivity-value">5</span>
+                </div>
+
+                <div class="control-group">
+                    <button id="toggle-audio" class="btn primary">Start Audio</button>
+                    <button id="reset-shapes" class="btn secondary">Reset Shapes</button>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Active Shapes:</span>
+                    <span id="shape-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Notes Played:</span>
+                    <span id="note-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Motion Level:</span>
+                    <span id="motion-level">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="instructions">
+                <h3>How to Use:</h3>
+                <ul>
+                    <li><strong>Camera Mode:</strong> Move in front of your camera to generate musical shapes</li>
+                    <li><strong>Fallback Mode:</strong> Move your mouse or tap the screen to interact</li>
+                    <li><strong>Shapes:</strong> Animated shapes play musical notes when they collide or interact</li>
+                    <li><strong>Scales:</strong> Choose different musical scales to change the harmony</li>
+                    <li><strong>Stochastic:</strong> Random elements create unique musical experiences</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Particle background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="camera.js"></script>
+    <script src="shapes.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
